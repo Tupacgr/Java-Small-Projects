@@ -30,8 +30,6 @@ public class SecretAgentEvaluator {
     int suc = 0;
     for (int i = 0; i < ar2.length; i++) {
       s++;
-      char fl = ar2[i].charAt(0);
-      int uni = (int) fl;
       int ran = (int) (Math.random() * 100);
       byte score = (byte) ran;
       byte yp = (byte) (score % 3);
@@ -54,7 +52,8 @@ public class SecretAgentEvaluator {
       if (suc > MAX_ATTEMPTS) {
         break;
       } else {
-        System.out.println("Processing " + ar2[i] + "... " + "Character 0 is " + fl + " (Unicode: " + uni +")." + " Score generated: " + score + ". " + "Tier: " + tier + ". " + "Passed: " + flag);
+        Agent ag = new Agent(ar2[i], score, tier, flag);
+        ag.printAgentInfo();
       }
     }
     System.out.println("Emergency STOP encountered. Halting agent processing.");
