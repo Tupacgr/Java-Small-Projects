@@ -27,6 +27,7 @@ This program simulates a security agency terminal. It takes unformatted agent co
 ## 📅 Version History
 
 * **v1.0** - Initial Release: Core evaluation engine with string sanitization, random score generation, and security tier assignment.
+* **v1.1** - 1.1 Release: Improved code execution by creating an Agent Class.
 
 ---
 *Created by [FRONX] - AUEB Informatics Undergraduate*
