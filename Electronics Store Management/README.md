@@ -1,5 +1,5 @@
 # WIP (WORK IN PROGRESS)
-# Electronics Store Management 🕵️‍♂️
+# Electronics Store Management 💻
 
 A Java-based CLI system designed to process, and evaluate data from an Electronics Store simulating its functions.
 
