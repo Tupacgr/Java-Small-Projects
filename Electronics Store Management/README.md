@@ -9,7 +9,10 @@ This program simulates an electronisc store terminal. It receives orders from th
 
 ## 🚀 Features
 
-* **To Be Added:** 
+* **Create a Product and provide information such as its Name, ISBN, Description, Quantity, Price and Weight** 
+* **Change a Product's ISBN, Description, Quantity, Price and Weight** 
+* **Print all the Product's information at once** 
+
 
 ## 🛠️ Technologies Used
 
