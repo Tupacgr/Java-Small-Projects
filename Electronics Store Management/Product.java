@@ -12,7 +12,21 @@ class Product {
         this.weight = weight;
     }
 
-    protected void reduce(int x) {
+    protected void changeIsbn (String newI) {
+        this.isbn = newI;
+        System.out.println("ISBN changed successfully to " + this.isbn);
+    }
+
+    protected void changeWeight (double newW) {
+        this.weight = newW;
+        System.out.println("Weight changed successfully to " + this.weight);
+    }
+
+    protected void changeDesc (String newS) {
+        this.description = newS;
+        System.out.println("Description changed successfully to " + this.description);
+    }
+    protected void reduceQ (int x) {
         if (this.quantity - x >= 0) {
             this.quantity -= x;
             System.out.println("The quantity was reduced from " + 
@@ -22,7 +36,7 @@ class Product {
         }
     }
 
-    protected void increase(int x) {
+    protected void increaseQ(int x) {
         this.quantity += x;
         System.out.println("The quantity was increased from " + (this.quantity - x) + " to " + this.quantity);
     }
@@ -42,5 +56,10 @@ class Product {
                 } else { System.out.println("Impossible! Cannot subtract " + x + " from " + this.price); }
                 break;
         }
+    }
+
+    public String toString() {
+        return "Name: " + this.name + " ISBN:" + this.isbn + " Description" + this.description + 
+        " Quantity" + this.quantity + " Price: " + this.price + " Weight: " + this.weight;
     }
 }
