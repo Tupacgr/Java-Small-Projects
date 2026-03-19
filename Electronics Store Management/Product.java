@@ -61,9 +61,4 @@ class Product {
             System.out.println("The Product was successfully sold for " + (this.price * (100.0 - discount)/100));
         } else { System.out.println("Product out of Stock"); }
     }
-
-    public String toString() {
-        return "Name: " + this.name + " ISBN:" + this.isbn + " Description" + this.description + 
-        " Quantity" + this.quantity + " Price: " + this.price + " Weight: " + this.weight;
-    }
 }

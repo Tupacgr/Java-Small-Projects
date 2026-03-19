@@ -10,12 +10,14 @@ public class App {
     }
 
     public void start() {
-        String[] catalogue = {"1: Create a new Product", "2: Exit"};
-        String[] listProducts = {"1: Smartphone", "2: Laptop"};
+        String[] catalogueMain = {"1: Create a new Product", "2: Exit"};
+        String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
+        String[] listProducts = {"1: Smartphone"};
         while (true) {
-            byte choice = getInput(catalogue);
+            byte choice = getInput(catalogueMain);
             switch (choice) {
                 case 1:
+                    byte c = getInput(catalogueProd);
                     // Code here
                     break;
                 case 2: return;
