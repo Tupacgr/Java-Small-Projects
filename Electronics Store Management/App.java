@@ -29,6 +29,6 @@ public class App {
     public byte getInput(String[] catalogue) {
         System.out.println("Please type the number of your preferred choice (eg 1, 2, 3 etc...)");
         for (String c: catalogue) { System.out.println(c); }
-        return scObj.nextByte();
+        return scObj.nextByte(); 
     }
 }
