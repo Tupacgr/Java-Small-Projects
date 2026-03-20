@@ -26,7 +26,7 @@ class Smartphone extends Product {
         Operating System: %s
         Screen Size: %s
         Storage: %s
-        """.formatted(this.weight, this.model, this.rlDate,
+        """.formatted(this.model, this.rlDate,
                     this.color, this.os, this.screenSize, this.storage);
         return text;
      }
