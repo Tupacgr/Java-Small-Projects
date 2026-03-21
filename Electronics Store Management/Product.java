@@ -1,12 +1,15 @@
 class Product {
-    protected String name, isbn, description;
-    protected int quantity;
-    protected double price, weight;
+    private String name, isbn, description, rlDate, color;
+    private int quantity;
+    private double price, weight;
    
-    protected Product(String name, String isbn, String description, int quantity, double price, double weight) {
+    protected Product(String name, String isbn, String description, String rlDate, String color,
+         int quantity, double price, double weight) {
         this.name = name;
         this.isbn = isbn;
         this.description = description;
+        this.rlDate = rlDate;
+        this.color = color;
         this.quantity = quantity;
         this.price = price;
         this.weight = weight;
@@ -67,8 +70,10 @@ class Product {
         Name: %s
         ISBN: %s
         Description: %s
+        Release Date: %s
+        Color: %s
         Quantity: %s
         Price: %s
-        Weight: %s""".formatted(this.name, this.isbn, this.description, this.quantity, this.price, this.weight);
+        Weight: %s""".formatted(this.name, this.isbn, this.description, this.rlDate, this.color, this.quantity, this.price, this.weight);
     }
 }

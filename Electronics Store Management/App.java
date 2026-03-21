@@ -56,6 +56,12 @@ public class App {
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine();
+
+        System.out.println("Enter Release Date: ");
+        String rlDate = scObj.nextLine();
+
+        System.out.println("Enter Color: ");
+        String color = scObj.nextLine();
         
         System.out.println("Enter Quantity: ");
         int quantity = scObj.nextInt();
@@ -71,12 +77,6 @@ public class App {
         System.out.println("Enter Model: ");
         String model = scObj.nextLine();
         
-        System.out.println("Enter Release Date: ");
-        String rlDate = scObj.nextLine();
-        
-        System.out.println("Enter Color: ");
-        String color = scObj.nextLine();
-        
         System.out.println("Enter OS: ");
         String os = scObj.nextLine();
         
@@ -88,7 +88,7 @@ public class App {
 
         scObj.nextLine();
 
-        return new Smartphone(name, isbn, description, quantity, price, weight, 
-                              model, rlDate, color, os, screenSize, storage);
+        return new Smartphone(name, isbn, description, rlDate, color, quantity, price, weight, 
+                              model, os, screenSize, storage);
     }
 }
