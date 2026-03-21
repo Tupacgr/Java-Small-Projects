@@ -69,7 +69,6 @@ class Product {
         Description: %s
         Quantity: %s
         Price: %s
-        Weight: %s
-        """.formatted(this.name, this.isbn, this.description, this.quantity, this.price, this.weight);
+        Weight: %s""".formatted(this.name, this.isbn, this.description, this.quantity, this.price, this.weight);
     }
 }

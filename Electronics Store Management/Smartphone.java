@@ -18,15 +18,14 @@ class Smartphone extends Product {
         String text = super.toString();
         text = """
         Smartphone Details:
-        """ + text + 
-        """
+        %s
         Model: %s
         Release Date: %s
         Color: %s
         Operating System: %s
         Screen Size: %s
         Storage: %s
-        """.formatted(this.model, this.rlDate,
+        """.formatted(super.toString() ,this.model, this.rlDate,
                     this.color, this.os, this.screenSize, this.storage);
         return text;
      }
