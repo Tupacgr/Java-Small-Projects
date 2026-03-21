@@ -1,7 +1,7 @@
 class Product {
-    private String name, isbn, description, rlDate, color;
-    private int quantity;
-    private double price, weight;
+    protected String name, isbn, description, rlDate, color;
+    protected int quantity;
+    protected double price, weight;
    
     protected Product(String name, String isbn, String description, String rlDate, String color,
          int quantity, double price, double weight) {

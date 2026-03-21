@@ -1,6 +1,6 @@
 class Smartphone extends Product {
-    private String model, os;
-    private double screenSize, storage;
+    protected String model, os;
+    protected double screenSize, storage;
    
     protected Smartphone (String name, String isbn, String description, String rlDate, String color,
          int quantity, double price, double weight, String model, String os, double screenSize, double storage) {

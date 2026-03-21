@@ -23,7 +23,8 @@ public class App {
                             System.out.println(sm);
                             break;
                         case 2:
-                            // Code here
+                            Laptop lp = createLp();
+                            System.out.println(lp);
                             break;
                         default:
                             System.out.println("Please enter a valid number!");
@@ -90,5 +91,85 @@ public class App {
 
         return new Smartphone(name, isbn, description, rlDate, color, quantity, price, weight, 
                               model, os, screenSize, storage);
+    }
+
+    private Laptop createLp() {
+        scObj.nextLine(); // clears buffer
+
+        System.out.println("Please provide all the following information: ");
+        
+        System.out.println("Enter Name: ");
+        String name = scObj.nextLine();
+        
+        System.out.println("Enter ISBN: ");
+        String isbn = scObj.nextLine();
+        
+        System.out.println("Enter Description: ");
+        String description = scObj.nextLine();
+
+        System.out.println("Enter Release Date: ");
+        String rlDate = scObj.nextLine();
+
+        System.out.println("Enter Color: ");
+        String color = scObj.nextLine();
+        
+        System.out.println("Enter Quantity: ");
+        int quantity = scObj.nextInt();
+        
+        System.out.println("Enter Price: ");
+        double price = scObj.nextDouble();
+        
+        System.out.println("Enter Weight: ");
+        double weight = scObj.nextDouble();
+
+        scObj.nextLine(); 
+
+        System.out.println("Enter Model: ");
+        String model = scObj.nextLine();
+        
+        System.out.println("Enter OS: ");
+        String os = scObj.nextLine();
+
+        System.out.println("Enter CPU model: ");
+        String cpu = scObj.nextLine();
+
+        System.out.println("Enter GPU model: ");
+        String gpu = scObj.nextLine();
+        
+        System.out.println("Enter Screen Size: ");
+        double screenSize = scObj.nextDouble();
+        
+        System.out.println("Enter Storage (GB): ");
+        double storage = scObj.nextDouble();
+
+        System.out.println("Enter RAM capacity (GB): ");
+        double ram = scObj.nextDouble();
+
+        scObj.nextLine();
+
+        boolean isGaming = false;
+        while (true) {
+        System.out.println("Is it considered a Gaming Laptop (Y for Yes or N for No)?");
+        String ans = scObj.nextLine().trim().toUpperCase();
+
+        boolean flag = false;
+        switch (ans) {
+            case "Y":
+                isGaming = true;
+                flag = true;
+                break;
+            case "N":
+                isGaming = false;
+                flag = true;
+                break;
+            default:
+                System.out.println("Please enter Y for YES or N for No!");
+        }
+        if (flag) { break; }
+        }
+
+        return new Laptop (name, isbn, description, rlDate, color, quantity, price, weight, model, os, 
+            cpu, gpu, screenSize, storage, ram, isGaming);
+        
     }
 }
