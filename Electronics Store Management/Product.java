@@ -60,7 +60,7 @@ class Product {
 
     protected void buy(double discount) {
         if (this.quantity > 0) {
-            this.quantity -= 1;
+            this.reduceQ(1);
             System.out.println("The Product was successfully sold for " + (this.price * (100.0 - discount)/100));
         } else { System.out.println("Product out of Stock"); }
     }

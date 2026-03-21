@@ -16,7 +16,7 @@ This program simulates an electronisc store terminal. It receives orders from th
 
 ## 🛠️ Technologies Used
 
-* **Language:** Java 8+
+* **Language:** Java 17+
 * **Key Concepts:** 
     * **To Be Added:** 
 

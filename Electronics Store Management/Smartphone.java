@@ -13,8 +13,7 @@ class Smartphone extends Product {
 
     @Override
     public String toString() {
-        String text = super.toString();
-        text = """
+        String text = """
         Smartphone Details:
         %s
         Model: %s
