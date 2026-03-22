@@ -1,7 +1,25 @@
 class Product {
-    protected String name, isbn, description, rlDate, color;
-    protected int quantity;
-    protected double price, weight;
+    private String name, isbn, description, rlDate, color;
+    private int quantity;
+    private double price, weight;
+
+    public String getName () { return this.name; }
+    public String getIsbn () { return this.isbn; }
+    public String getDescription () { return this.description; }
+    public String getRlDate () { return this.rlDate; }
+    public String getColor () { return this.color; }
+    public int getQuantity () { return this.quantity; }
+    public double getPrice () { return this.price; }
+    public double getWeight () { return this.weight; }
+
+    public void setName (String newName) { this.name = newName; }
+    public void setIsbn (String newIsbn) { this.isbn = newIsbn; }
+    public void setDescription (String newDescription) { this.description = newDescription; }
+    public void setRlDate (String newRldate) { this.rlDate = newRldate; }
+    public void setColor (String newColor) { this.color = newColor; }
+    public void setQuantity (int newQuantity) { this.quantity = newQuantity; }
+    public void setPrice (double newPrice) { this.price = newPrice;}
+    public void setWeight (double newWeight) { this.weight = newWeight; }
    
     protected Product(String name, String isbn, String description, String rlDate, String color,
          int quantity, double price, double weight) {

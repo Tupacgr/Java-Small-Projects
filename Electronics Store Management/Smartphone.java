@@ -1,6 +1,16 @@
 class Smartphone extends Product {
-    protected String model, os;
-    protected double screenSize, storage;
+    private String model, os;
+    private double screenSize, storage;
+
+    public String getModel () { return this.model; }
+    public String getOs () { return this.os; }
+    public double getScreenSize () { return this.screenSize; }
+    public double getStorage () { return this.storage;}
+
+    public void setModel (String newModel) { this.model = newModel; }
+    public void setOs (String newOs) { this.os = newOs; }
+    public void setScreenSize (double newScreenSize) { this.screenSize = newScreenSize; }
+    public void setStorage (double newStorage) { this.storage = newStorage; }
    
     protected Smartphone (String name, String isbn, String description, String rlDate, String color,
          int quantity, double price, double weight, String model, String os, double screenSize, double storage) {
