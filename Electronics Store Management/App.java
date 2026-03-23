@@ -1,6 +1,7 @@
 /* This Project is a WIP (Work In Progress)!! */
 
 import java.util.Scanner;
+import java.util.ArrayList;
 
 public class App {
     protected Scanner scObj = new Scanner(System.in);
@@ -12,6 +13,8 @@ public class App {
     public void start() {
         String[] catalogueMain = {"1: Create a new Product", "2: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
+        ArrayList<Smartphone> arrSm = new ArrayList<Smartphone>();
+        ArrayList<Laptop> arrLp = new ArrayList<Laptop>();
         while (true) {
             byte choice = getInput(catalogueMain);
             switch (choice) {
@@ -19,12 +22,14 @@ public class App {
                     byte c = getInput(catalogueProd);
                     switch (c) {
                         case 1:
-                            Smartphone sm = createSm();
-                            System.out.println(sm);
+                            arrSm.add(createSm());
+                            System.out.println("A new Smartphone was added with the following information: ");
+                            System.out.println(arrSm.get(arrSm.size() - 1));
                             break;
                         case 2:
-                            Laptop lp = createLp();
-                            System.out.println(lp);
+                            arrLp.add(createLp());
+                            System.out.println("A new Laptop was added with the following information: ");
+                            System.out.println(arrLp.get(arrLp.size() - 1));
                             break;
                         default:
                             System.out.println("Please enter a valid number!");

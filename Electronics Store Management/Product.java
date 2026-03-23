@@ -1,4 +1,4 @@
-class Product {
+abstract class Product {
     private String name, isbn, description, rlDate, color;
     private int quantity;
     private double price, weight;
