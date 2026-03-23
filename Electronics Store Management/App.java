@@ -11,7 +11,8 @@ public class App {
     }
 
     public void start() {
-        String[] catalogueMain = {"1: Create a new Product", "2: Exit"};
+        String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
+         "4: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
         ArrayList<Smartphone> arrSm = new ArrayList<Smartphone>();
         ArrayList<Laptop> arrLp = new ArrayList<Laptop>();
@@ -35,7 +36,13 @@ public class App {
                             System.out.println("Please enter a valid number!");
                     }
                     break;
-                case 2: 
+                case 2:
+                    viewCat(arrSm, "All the Smartphones and their Information are:");
+                    break;
+                case 3:
+                    viewCat(arrLp, "All the Laptops and their Information are:");
+                    break;
+                case 4: 
                 System.out.println("Exiting...");
                 return;
                 default: System.out.println("Please enter a valid number!");
@@ -176,5 +183,14 @@ public class App {
         return new Laptop (name, isbn, description, rlDate, color, quantity, price, weight, model, os, 
             cpu, gpu, screenSize, storage, ram, isGaming);
         
+    }
+
+    private void viewCat(ArrayList<? extends Product> arr, String msg) {
+        System.out.println(msg);
+        System.out.println();
+        for (Product p: arr) {
+            System.out.println(p);
+            System.out.println();
+        }
     }
 }
