@@ -12,15 +12,17 @@ public class App {
 
     public void start() {
         String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
-         "4: Exit"};
+         "4: Search a Product and get it's Information", "5: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
+        String[] catCh = {"Search a Smartphone (type 1)", "Search a Laptop (type 2)"};
         ArrayList<Smartphone> arrSm = new ArrayList<Smartphone>();
         ArrayList<Laptop> arrLp = new ArrayList<Laptop>();
         while (true) {
             byte choice = getInput(catalogueMain);
+            byte c;
             switch (choice) {
                 case 1:
-                    byte c = getInput(catalogueProd);
+                    c = getInput(catalogueProd);
                     switch (c) {
                         case 1:
                             arrSm.add(createSm());
@@ -42,7 +44,15 @@ public class App {
                 case 3:
                     viewCat(arrLp, "All the Laptops and their Information are:");
                     break;
-                case 4: 
+                case 4:
+                    c = getInput(catCh);
+                    boolean flag = (c == 1) ? (true) : (false);
+                    scObj.nextLine();
+                    System.out.println("Enter the ISBN:");
+                    String isbn = scObj.nextLine();
+                    // Code here
+                    break;
+                case 5: 
                 System.out.println("Exiting...");
                 return;
                 default: System.out.println("Please enter a valid number!");
