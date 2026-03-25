@@ -47,7 +47,7 @@ public class App {
                     break;
                 case 4:
                     c = getInput(catCh);
-                    String fiCh;
+                    String fiCh = "nothing";
                     boolean flag;
                     switch (c) {
                         case 1:
@@ -63,10 +63,11 @@ public class App {
                             flag = false;
                     }
                     if (flag) {
-                        System.out.println("Enter the CODE:");
+                        System.out.println("Enter the CODE of the product:");
                         scObj.nextLine();
                         String code = scObj.nextLine();
-                        // Code here
+                        if (fiCh.equals("Sm")) { prSm(code, arrSm); }
+                        if (fiCh.equals("Lp")) { prLp(code, arrLp); }
                     }
                     break;
                 case 5: 
@@ -220,5 +221,27 @@ public class App {
             System.out.println(p);
             System.out.println();
         }
+    }
+
+    private void prSm (String code, ArrayList<Smartphone> arrSm) {
+        boolean flag = false;
+        for (Smartphone s: arrSm) {
+            if (s.getCode().equals(code)) { 
+                flag = true;
+                System.out.println(s); 
+            }
+        }
+        if (!flag) { System.out.println("Smartphone with Code: " + code + " not found");}
+    }
+
+    private void prLp (String code, ArrayList<Laptop> arrLp) {
+        boolean flag = false;
+        for (Laptop l: arrLp) {
+            if (l.getCode().equals(code)) {
+                flag = true;
+                System.out.println(l);
+            }
+        }
+        if (!flag) { System.out.println("Laptop with Code: " + code + " not found");}
     }
 }
