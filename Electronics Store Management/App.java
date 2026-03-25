@@ -17,6 +17,7 @@ public class App {
         String[] catCh = {"Search a Smartphone (type 1)", "Search a Laptop (type 2)"};
         ArrayList<Smartphone> arrSm = new ArrayList<Smartphone>();
         ArrayList<Laptop> arrLp = new ArrayList<Laptop>();
+
         while (true) {
             byte choice = getInput(catalogueMain);
             byte c;
@@ -46,17 +47,34 @@ public class App {
                     break;
                 case 4:
                     c = getInput(catCh);
-                    boolean flag = (c == 1) ? (true) : (false);
-                    scObj.nextLine();
-                    System.out.println("Enter the ISBN:");
-                    String isbn = scObj.nextLine();
-                    // Code here
+                    String fiCh;
+                    boolean flag;
+                    switch (c) {
+                        case 1:
+                            fiCh = "Sm";
+                            flag = true;
+                            break;
+                        case 2:
+                            fiCh = "Lp";
+                            flag = true;
+                            break;
+                        default:
+                            System.out.println("Please enter a valid number!");
+                            flag = false;
+                    }
+                    if (flag) {
+                        System.out.println("Enter the CODE:");
+                        scObj.nextLine();
+                        String code = scObj.nextLine();
+                        // Code here
+                    }
                     break;
                 case 5: 
                 System.out.println("Exiting...");
                 return;
                 default: System.out.println("Please enter a valid number!");
             }
+            System.out.println();
         }
     }
 
@@ -74,8 +92,8 @@ public class App {
         System.out.println("Enter Name: ");
         String name = scObj.nextLine();
         
-        System.out.println("Enter ISBN: ");
-        String isbn = scObj.nextLine();
+        System.out.println("Enter CODE: ");
+        String code = scObj.nextLine();
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine();
@@ -111,7 +129,7 @@ public class App {
 
         scObj.nextLine();
 
-        return new Smartphone(name, isbn, description, rlDate, color, quantity, price, weight, 
+        return new Smartphone(name, code, description, rlDate, color, quantity, price, weight, 
                               model, os, screenSize, storage);
     }
 
@@ -123,8 +141,8 @@ public class App {
         System.out.println("Enter Name: ");
         String name = scObj.nextLine();
         
-        System.out.println("Enter ISBN: ");
-        String isbn = scObj.nextLine();
+        System.out.println("Enter CODE: ");
+        String code = scObj.nextLine();
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine();
@@ -190,7 +208,7 @@ public class App {
         if (flag) { break; }
         }
 
-        return new Laptop (name, isbn, description, rlDate, color, quantity, price, weight, model, os, 
+        return new Laptop (name, code, description, rlDate, color, quantity, price, weight, model, os, 
             cpu, gpu, screenSize, storage, ram, isGaming);
         
     }

@@ -1,10 +1,10 @@
 abstract class Product {
-    private String name, isbn, description, rlDate, color;
+    private String name, code, description, rlDate, color;
     private int quantity;
     private double price, weight;
 
     public String getName () { return this.name; }
-    public String getIsbn () { return this.isbn; }
+    public String getCode () { return this.code; }
     public String getDescription () { return this.description; }
     public String getRlDate () { return this.rlDate; }
     public String getColor () { return this.color; }
@@ -12,19 +12,35 @@ abstract class Product {
     public double getPrice () { return this.price; }
     public double getWeight () { return this.weight; }
 
-    public void setName (String newName) { this.name = newName; }
-    public void setIsbn (String newIsbn) { this.isbn = newIsbn; }
-    public void setDescription (String newDescription) { this.description = newDescription; }
-    public void setRlDate (String newRldate) { this.rlDate = newRldate; }
-    public void setColor (String newColor) { this.color = newColor; }
-    public void setQuantity (int newQuantity) { this.quantity = newQuantity; }
-    public void setPrice (double newPrice) { this.price = newPrice;}
-    public void setWeight (double newWeight) { this.weight = newWeight; }
+    public void setName (String newName) { 
+        System.out.println("Name changed successfully from " + this.name + " to " + newName);
+        this.name = newName;
+         }
+
+    public void setCode (String newCode) { 
+        System.out.println("Code changed successfully from " + this.code + " to " + newCode);
+        this.code = newCode; }
+
+    public void setDescription (String newDescription) { 
+        System.out.println("Description changed successfully from " + this.description + " to " + newDescription);
+        this.description = newDescription; }
+
+    public void setRlDate (String newRldate) { 
+        System.out.println("Release Date changed successfully from " + this.rlDate + " to " + newRldate);
+        this.rlDate = newRldate; }
+
+    public void setColor (String newColor) { 
+        System.out.println("Color changed successfully from " + this.color + " to " + newColor);
+        this.color = newColor; }
+
+    public void setWeight (double newWeight) { 
+        System.out.println("Weight changed successfully from " + this.weight + " to " + newWeight);
+        this.weight = newWeight; }
    
-    protected Product(String name, String isbn, String description, String rlDate, String color,
+    protected Product(String name, String code, String description, String rlDate, String color,
          int quantity, double price, double weight) {
         this.name = name;
-        this.isbn = isbn;
+        this.code = code;
         this.description = description;
         this.rlDate = rlDate;
         this.color = color;
@@ -33,20 +49,6 @@ abstract class Product {
         this.weight = weight;
     }
 
-    protected void changeIsbn (String newI) {
-        this.isbn = newI;
-        System.out.println("ISBN changed successfully to " + this.isbn);
-    }
-
-    protected void changeWeight (double newW) {
-        this.weight = newW;
-        System.out.println("Weight changed successfully to " + this.weight);
-    }
-
-    protected void changeDesc (String newS) {
-        this.description = newS;
-        System.out.println("Description changed successfully to " + this.description);
-    }
     protected void reduceQ (int x) {
         if (this.quantity - x >= 0) {
             this.quantity -= x;
@@ -86,12 +88,12 @@ abstract class Product {
     public String toString() {
         return """
         Name: %s
-        ISBN: %s
+        CODE: %s
         Description: %s
         Release Date: %s
         Color: %s
         Quantity: %s
         Price: %s
-        Weight: %s""".formatted(this.name, this.isbn, this.description, this.rlDate, this.color, this.quantity, this.price, this.weight);
+        Weight: %s""".formatted(this.name, this.code, this.description, this.rlDate, this.color, this.quantity, this.price, this.weight);
     }
 }

@@ -12,9 +12,9 @@ class Smartphone extends Product {
     public void setScreenSize (double newScreenSize) { this.screenSize = newScreenSize; }
     public void setStorage (double newStorage) { this.storage = newStorage; }
    
-    protected Smartphone (String name, String isbn, String description, String rlDate, String color,
+    protected Smartphone (String name, String code, String description, String rlDate, String color,
          int quantity, double price, double weight, String model, String os, double screenSize, double storage) {
-            super(name, isbn, description, rlDate, color, quantity, price, weight);
+            super(name, code, description, rlDate, color, quantity, price, weight);
             this.model = model;
             this.os = os;
             this.screenSize = screenSize;

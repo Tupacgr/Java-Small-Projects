@@ -23,10 +23,10 @@ class Laptop extends Product {
    public void setIsGaming (boolean newIsGaming) { this.isGaming = newIsGaming; }
 
 
-   protected Laptop(String name, String isbn, String description, String rlDate, String color,
+   protected Laptop(String name, String code, String description, String rlDate, String color,
         int quantity, double price, double weight, String model, String os, String cpu, String gpu, double screenSize,
        double storage, double ram, boolean isGaming) {
-           super(name, isbn, description, rlDate, color, quantity, price, weight);
+           super(name, code, description, rlDate, color, quantity, price, weight);
            this.model = model;
            this.os = os;
            this.cpu = cpu;
