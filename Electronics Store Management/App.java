@@ -13,13 +13,14 @@ public class App {
 
     public void start() {
         String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
-         "4: Search a Product and get it's Information", "5: Exit"};
+         "4: Search a Product and get it's Information", "5: Change a Product's name", "6: Change a Product's Code", "7: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
         String[] catCh = {"Search a Smartphone (type 1)", "Search a Laptop (type 2)"};
 
         while (true) {
             byte choice = getInput(catalogueMain);
             byte c;
+            String code;
             switch (choice) {
                 case 1:
                     c = getInput(catalogueProd);
@@ -62,14 +63,23 @@ public class App {
                             flag = false;
                     }
                     if (flag) {
-                        System.out.println("Enter the CODE of the product:");
                         scObj.nextLine();
-                        String code = scObj.nextLine().trim();
+                        code = rcCode();
                         if (fiCh.equals("Sm")) { prInfo(code, Smartphone.class); }
                         if (fiCh.equals("Lp")) { prInfo(code, Laptop.class); }
                     }
                     break;
-                case 5: 
+                case 5:
+                    scObj.nextLine();
+                    code = rcCode();
+                    chName(code);
+                    break;
+                case 6:
+                    scObj.nextLine();
+                    code = rcCode();
+                    chCode(code);
+                    break;
+                case 7: 
                 System.out.println("Exiting...");
                 return;
                 default: System.out.println("Please enter a valid number!");
@@ -224,13 +234,47 @@ public class App {
     }
 
     private void prInfo (String code, Class<? extends Product> type) {
-        boolean flag = false;
+        boolean flag = true;
         for (Product p: arrPr) {
             if (type.isInstance(p) && p.getCode().equals(code)) { 
-                flag = true;
+                flag = false;
                 System.out.println(p); 
             }
         }
-        if (!flag) { System.out.println("Product with Code: " + code + " not found");}
+        if (flag) { System.out.println("Product with Code: " + code + " not found");}
+    }
+
+    private String rcCode() {
+        System.out.println("Enter the Product's Code:");
+        String code  = scObj.nextLine();
+        return code;
+    }
+
+    private void chName(String code) {
+        System.out.println("Enter the new Name:");
+        String newName = scObj.nextLine();
+        boolean flag = true;
+        for (Product p: arrPr) {
+            if (p.getCode().equals(code)) {
+                p.setName(newName);
+                flag = false;
+                break;
+            }
+        }
+        if (flag) { System.out.println("Product with Code: " + code + " not found");}
+    }
+
+    private void chCode(String code) {
+        System.out.println("Enter the new Code:");
+        String newCode = scObj.nextLine();
+        boolean flag = true;
+        for (Product p: arrPr) {
+            if (p.getCode().equals(code)) {
+                p.setCode(newCode);
+                flag = false;
+                break;
+            }
+        }
+        if (flag) { System.out.println("Product with Code: " + code + " not found");}
     }
 }
