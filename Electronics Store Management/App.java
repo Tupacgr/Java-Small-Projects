@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 public class App {
     protected Scanner scObj = new Scanner(System.in);
+    ArrayList<Product> arrPr = new ArrayList<Product>(); 
     public static void main(String[] args) {
         App myObj = new App();
         myObj.start();
@@ -15,8 +16,6 @@ public class App {
          "4: Search a Product and get it's Information", "5: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
         String[] catCh = {"Search a Smartphone (type 1)", "Search a Laptop (type 2)"};
-        ArrayList<Smartphone> arrSm = new ArrayList<Smartphone>();
-        ArrayList<Laptop> arrLp = new ArrayList<Laptop>();
 
         while (true) {
             byte choice = getInput(catalogueMain);
@@ -26,24 +25,24 @@ public class App {
                     c = getInput(catalogueProd);
                     switch (c) {
                         case 1:
-                            arrSm.add(createSm());
+                            arrPr.add(createSm());
                             System.out.println("A new Smartphone was added with the following information: ");
-                            System.out.println(arrSm.get(arrSm.size() - 1));
+                            System.out.println(arrPr.get(arrPr.size() - 1));
                             break;
                         case 2:
-                            arrLp.add(createLp());
+                            arrPr.add(createLp());
                             System.out.println("A new Laptop was added with the following information: ");
-                            System.out.println(arrLp.get(arrLp.size() - 1));
+                            System.out.println(arrPr.get(arrPr.size() - 1));
                             break;
                         default:
                             System.out.println("Please enter a valid number!");
                     }
                     break;
                 case 2:
-                    viewCat(arrSm, "All the Smartphones and their Information are:");
+                    viewCat(Smartphone.class, "All the Smartphones and their Information are:");
                     break;
                 case 3:
-                    viewCat(arrLp, "All the Laptops and their Information are:");
+                    viewCat(Laptop.class, "All the Laptops and their Information are:");
                     break;
                 case 4:
                     c = getInput(catCh);
@@ -66,8 +65,8 @@ public class App {
                         System.out.println("Enter the CODE of the product:");
                         scObj.nextLine();
                         String code = scObj.nextLine();
-                        if (fiCh.equals("Sm")) { prSm(code, arrSm); }
-                        if (fiCh.equals("Lp")) { prLp(code, arrLp); }
+                        if (fiCh.equals("Sm")) { prInfo(code, Smartphone.class); }
+                        if (fiCh.equals("Lp")) { prInfo(code, Laptop.class); }
                     }
                     break;
                 case 5: 
@@ -214,34 +213,24 @@ public class App {
         
     }
 
-    private void viewCat(ArrayList<? extends Product> arr, String msg) {
+    private void viewCat(Class<? extends Product> type, String msg) {
         System.out.println(msg);
         System.out.println();
-        for (Product p: arr) {
-            System.out.println(p);
-            System.out.println();
+        for (Product p: arrPr) {
+            if (type.isInstance(p)) {
+                System.out.println(p);
+            }
         }
     }
 
-    private void prSm (String code, ArrayList<Smartphone> arrSm) {
+    private void prInfo (String code, Class<? extends Product> type) {
         boolean flag = false;
-        for (Smartphone s: arrSm) {
-            if (s.getCode().equals(code)) { 
+        for (Product p: arrPr) {
+            if (type.isInstance(p) && p.getCode().equals(code)) { 
                 flag = true;
-                System.out.println(s); 
+                System.out.println(p); 
             }
         }
-        if (!flag) { System.out.println("Smartphone with Code: " + code + " not found");}
-    }
-
-    private void prLp (String code, ArrayList<Laptop> arrLp) {
-        boolean flag = false;
-        for (Laptop l: arrLp) {
-            if (l.getCode().equals(code)) {
-                flag = true;
-                System.out.println(l);
-            }
-        }
-        if (!flag) { System.out.println("Laptop with Code: " + code + " not found");}
+        if (!flag) { System.out.println("Product with Code: " + code + " not found");}
     }
 }
