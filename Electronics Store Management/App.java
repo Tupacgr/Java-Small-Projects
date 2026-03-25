@@ -64,7 +64,7 @@ public class App {
                     if (flag) {
                         System.out.println("Enter the CODE of the product:");
                         scObj.nextLine();
-                        String code = scObj.nextLine();
+                        String code = scObj.nextLine().trim();
                         if (fiCh.equals("Sm")) { prInfo(code, Smartphone.class); }
                         if (fiCh.equals("Lp")) { prInfo(code, Laptop.class); }
                     }
@@ -90,19 +90,19 @@ public class App {
         System.out.println("Please provide all the following information: ");
         
         System.out.println("Enter Name: ");
-        String name = scObj.nextLine();
+        String name = scObj.nextLine().trim();
         
         System.out.println("Enter CODE: ");
-        String code = scObj.nextLine();
+        String code = scObj.nextLine().trim();
         
         System.out.println("Enter Description: ");
-        String description = scObj.nextLine();
+        String description = scObj.nextLine().trim();
 
         System.out.println("Enter Release Date: ");
-        String rlDate = scObj.nextLine();
+        String rlDate = scObj.nextLine().trim();
 
         System.out.println("Enter Color: ");
-        String color = scObj.nextLine();
+        String color = scObj.nextLine().trim();
         
         System.out.println("Enter Quantity: ");
         int quantity = scObj.nextInt();
@@ -116,10 +116,10 @@ public class App {
         scObj.nextLine(); 
 
         System.out.println("Enter Model: ");
-        String model = scObj.nextLine();
+        String model = scObj.nextLine().trim();
         
         System.out.println("Enter OS: ");
-        String os = scObj.nextLine();
+        String os = scObj.nextLine().trim();
         
         System.out.println("Enter Screen Size: ");
         double screenSize = scObj.nextDouble();
@@ -139,19 +139,19 @@ public class App {
         System.out.println("Please provide all the following information: ");
         
         System.out.println("Enter Name: ");
-        String name = scObj.nextLine();
+        String name = scObj.nextLine().trim();
         
         System.out.println("Enter CODE: ");
-        String code = scObj.nextLine();
+        String code = scObj.nextLine().trim();
         
         System.out.println("Enter Description: ");
-        String description = scObj.nextLine();
+        String description = scObj.nextLine().trim();
 
         System.out.println("Enter Release Date: ");
-        String rlDate = scObj.nextLine();
+        String rlDate = scObj.nextLine().trim();
 
         System.out.println("Enter Color: ");
-        String color = scObj.nextLine();
+        String color = scObj.nextLine().trim();
         
         System.out.println("Enter Quantity: ");
         int quantity = scObj.nextInt();
@@ -165,16 +165,16 @@ public class App {
         scObj.nextLine(); 
 
         System.out.println("Enter Model: ");
-        String model = scObj.nextLine();
+        String model = scObj.nextLine().trim();
         
         System.out.println("Enter OS: ");
-        String os = scObj.nextLine();
+        String os = scObj.nextLine().trim();
 
         System.out.println("Enter CPU model: ");
-        String cpu = scObj.nextLine();
+        String cpu = scObj.nextLine().trim();
 
         System.out.println("Enter GPU model: ");
-        String gpu = scObj.nextLine();
+        String gpu = scObj.nextLine().trim();
         
         System.out.println("Enter Screen Size: ");
         double screenSize = scObj.nextDouble();
