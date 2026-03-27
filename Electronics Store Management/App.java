@@ -22,63 +22,60 @@ public class App {
             byte c;
             String code;
             switch (choice) {
-                case 1:
+                case 1 -> {
                     c = getInput(catalogueProd);
                     switch (c) {
-                        case 1:
+                        case 1 -> {
                             arrPr.add(createSm());
                             System.out.println("A new Smartphone was added with the following information: ");
                             System.out.println(arrPr.get(arrPr.size() - 1));
-                            break;
-                        case 2:
+                        }
+                        case 2 -> {
                             arrPr.add(createLp());
                             System.out.println("A new Laptop was added with the following information: ");
                             System.out.println(arrPr.get(arrPr.size() - 1));
-                            break;
-                        default:
-                            System.out.println("Please enter a valid number!");
+                        }
+                        default -> System.out.println("Please enter a valid number!");
                     }
-                    break;
-                case 2:
-                    viewCat(Smartphone.class, "All the Smartphones and their Information are:");
-                    break;
-                case 3:
-                    viewCat(Laptop.class, "All the Laptops and their Information are:");
-                    break;
-                case 4:
+                }
+                case 2 -> viewCat(Smartphone.class, "All the Smartphones and their Information are:");
+                case 3 -> viewCat(Laptop.class, "All the Laptops and their Information are:");
+                case 4 -> {
                     scObj.nextLine();
                     code = rcCode();
                     prInfo(code);
-                    break;
-                case 5:
+                }
+                case 5 -> {
                     scObj.nextLine();
                     code = rcCode();
                     chName(code);
-                    break;
-                case 6:
+                }
+                case 6 -> {
                     scObj.nextLine();
                     code = rcCode();
                     chCode(code);
-                    break;
-                case 7:
+                }
+                case 7 -> {
                     scObj.nextLine();
                     code = rcCode();
                     chDesc(code);
-                    break;
-                case 8:
+                }
+                case 8 -> {
                     scObj.nextLine();
                     code = rcCode();
                     chRl(code);
-                    break;
-                case 9:
+                }
+                case 9 -> {
                     scObj.nextLine();
                     code = rcCode();
                     chCo(code);
-                    break;
-                case 10: 
+                }
+                case 10 -> { 
                 System.out.println("Exiting...");
                 return;
-                default: System.out.println("Please enter a valid number!");
+                }
+                default-> System.out.println("Please enter a valid number!");
+
             }
             System.out.println();
         }
