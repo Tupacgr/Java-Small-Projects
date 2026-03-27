@@ -229,16 +229,20 @@ public class App {
         }
     }
 
-    private void prInfo (String code) {
-        boolean flag = true;
+    private Product searchPr(String code) {
         for (Product p: arrPr) {
-            if (p.getCode().equals(code)) { 
-                flag = false;
-                System.out.println(p); 
-                break;
-            }
+            if (p.getCode().equals(code)) { return p;}
         }
-        if (flag) { System.out.println("Product with Code: " + code + " not found");}
+        System.out.println("Product with Code: " + code + " not found");
+        return null;
+
+    } 
+
+    private void prInfo (String code) {
+        Product p = searchPr(code);
+        if (p!=null) {
+            System.out.println(p); 
+        }
     }
 
     private String rcCode() {
@@ -248,72 +252,47 @@ public class App {
     }
 
     private void chName(String code) {
-        System.out.println("Enter the new Name:");
-        String newName = scObj.nextLine();
-        boolean flag = true;
-        for (Product p: arrPr) {
-            if (p.getCode().equals(code)) {
-                p.setName(newName);
-                flag = false;
-                break;
-            }
+        Product p = searchPr(code);
+        if (p!=null) {
+            System.out.println("Enter the new Name:");
+            String newName = scObj.nextLine();
+            p.setName(newName);
         }
-        if (flag) { System.out.println("Product with Code: " + code + " not found");}
     }
 
     private void chCode(String code) {
-        System.out.println("Enter the new Code:");
-        String newCode = scObj.nextLine();
-        boolean flag = true;
-        for (Product p: arrPr) {
-            if (p.getCode().equals(code)) {
-                p.setCode(newCode);
-                flag = false;
-                break;
-            }
+        Product p = searchPr(code);
+        if (p!= null) {
+            System.out.println("Enter the new Code:");
+            String newCode = scObj.nextLine();
+            p.setCode(newCode);
         }
-        if (flag) { System.out.println("Product with Code: " + code + " not found");}
     }
 
     private void chDesc(String code) {
-        System.out.println("Enter the new Description:");
-        String newDesc = scObj.nextLine();
-        boolean flag = true;
-        for (Product p: arrPr) {
-            if (p.getCode().equals(code)) {
-                p.setDescription(newDesc);
-                flag = false;
-                break;
-            }
+        Product p = searchPr(code);
+        if (p!=null) {
+            System.out.println("Enter the new Description:");
+            String newDesc = scObj.nextLine();
+            p.setDescription(newDesc);
         }
-        if (flag) { System.out.println("Product with Code: " + code + " not found");}
     }
 
     private void chRl(String code) {
-        System.out.println("Enter the new Release Date:");
-        String newRl = scObj.nextLine();
-        boolean flag = true;
-        for (Product p: arrPr) {
-            if (p.getCode().equals(code)) {
-                p.setRlDate(newRl);
-                flag = false;
-                break;
-            }
-        }
-        if (flag) { System.out.println("Product with Code: " + code + " not found");}
+        Product p = searchPr(code);
+        if (p!=null) {
+            System.out.println("Enter the new Release Date:");
+            String newRl = scObj.nextLine();
+            p.setRlDate(newRl);
+        } 
     }
 
     private void chCo(String code) {
-        System.out.println("Enter the new Color:");
-        String newColor = scObj.nextLine();
-        boolean flag = true;
-        for (Product p: arrPr) {
-            if (p.getCode().equals(code)) {
-                p.setColor(newColor);
-                flag = false;
-                break;
-            }
-        }
-        if (flag) { System.out.println("Product with Code: " + code + " not found");}
+        Product p = searchPr(code);
+        if (p!=null) {
+            System.out.println("Enter the new Color:");
+            String newColor = scObj.nextLine();
+            p.setColor(newColor);
+        } 
     }
 }
