@@ -14,7 +14,7 @@ public class App {
     public void start() {
         String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
          "4: Search a Product and get it's Information", "5: Change a Product's name", "6: Change a Product's Code", "7: Change a Product's Description",
-          "8: Change a Product's Release Date", "9: Change a Product's Color",  "10: Exit"};
+          "8: Change a Product's Release Date", "9: Change a Product's Color", "10: Change a product's quantity",  "11: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
 
         while (true) {
@@ -27,11 +27,13 @@ public class App {
                     switch (c) {
                         case 1 -> {
                             arrPr.add(createSm());
+                            System.out.println();
                             System.out.println("A new Smartphone was added with the following information: ");
                             System.out.println(arrPr.get(arrPr.size() - 1));
                         }
                         case 2 -> {
                             arrPr.add(createLp());
+                            System.out.println();
                             System.out.println("A new Laptop was added with the following information: ");
                             System.out.println(arrPr.get(arrPr.size() - 1));
                         }
@@ -70,7 +72,13 @@ public class App {
                     code = rcCode();
                     chCo(code);
                 }
-                case 10 -> { 
+                case 10 -> {
+                    scObj.nextLine();
+                    code = rcCode();
+                    chQuan(code);
+                    scObj.nextLine();
+                }
+                case 11 -> { 
                 System.out.println("Exiting...");
                 return;
                 }
@@ -298,5 +306,31 @@ public class App {
             String newColor = scObj.nextLine();
             p.setColor(newColor);
         } 
+    }
+
+    private void chQuan(String code) {
+        Product p = searchPr(code);
+        if (p!=null) {
+            String[] arrC = {"Increase the product's quantity (type 1)", "Decrease the product's quantity (type 2)"};
+            byte choice;
+            while (true) {
+                choice = getInput(arrC);
+                if (choice == 1 || choice == 2) {
+                    break;
+                } else { System.out.println("Please enter a valid number (1 for increment, 2 for decrement)");}
+            }
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("Enter the quantity increment");
+                    int num = scObj.nextInt();
+                    p.increaseQ(num);
+                }
+                case 2 -> {
+                    System.out.println("Enter the quantity decrement (type a number greater than 0)");
+                    int num = scObj.nextInt();
+                    p.reduceQ(num);
+                }
+            }
+        }
     }
 }
