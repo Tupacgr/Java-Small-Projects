@@ -1,5 +1,3 @@
-/* This Project is a WIP (Work In Progress)!! */
-
 import java.util.Scanner;
 import java.util.ArrayList;
 
@@ -13,8 +11,8 @@ public class App {
 
     public void start() {
         String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
-         "4: Search a Product and get it's Information", "5: Change a Product's name", "6: Change a Product's Code", "7: Change a Product's Description",
-          "8: Change a Product's Release Date", "9: Change a Product's Color", "10: Change a product's quantity",  "11: Exit"};
+         "4: Search a Product and get it's Information", "5: Change a Product's Name", "6: Change a Product's Code", "7: Change a Product's Description",
+          "8: Change a Product's Release Date", "9: Change a Product's Color", "10: Change a product's Quantity",  "11: Change a Product's Price", "12: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
 
         while (true) {
@@ -43,42 +41,38 @@ public class App {
                 case 2 -> viewCat(Smartphone.class, "All the Smartphones and their Information are:");
                 case 3 -> viewCat(Laptop.class, "All the Laptops and their Information are:");
                 case 4 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     prInfo(code);
                 }
                 case 5 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     chName(code);
                 }
                 case 6 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     chCode(code);
                 }
                 case 7 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     chDesc(code);
                 }
                 case 8 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     chRl(code);
                 }
                 case 9 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     chCo(code);
                 }
                 case 10 -> {
-                    scObj.nextLine();
                     code = rcCode();
                     chQuan(code);
-                    scObj.nextLine();
                 }
-                case 11 -> { 
+                case 11 -> {
+                    code = rcCode();
+                    chPrice(code);
+                }
+                case 12 -> { 
                 System.out.println("Exiting...");
                 return;
                 }
@@ -92,12 +86,13 @@ public class App {
     public byte getInput(String[] catalogue) {
         System.out.println("Please type the number of your preferred choice (eg 1, 2, 3 etc...)");
         for (String c: catalogue) { System.out.println(c); }
-        return scObj.nextByte(); 
+        return Byte.parseByte(scObj.nextLine()); 
     }
 
-    private String uniqueCode() {
+    private String uniqueCode(boolean sign) {
         while (true) {
-            System.out.println("Enter CODE: ");
+            if (sign) { System.out.println("Enter CODE: ");}
+            else { System.out.println("Enter the new Code:");}
             String code = scObj.nextLine().trim();
             boolean flag = true;
             for (Product p: arrPr) {
@@ -112,14 +107,13 @@ public class App {
     }
 
     private Smartphone createSm() {
-        scObj.nextLine(); // clears buffer
 
         System.out.println("Please provide all the following information: ");
         
         System.out.println("Enter Name: ");
         String name = scObj.nextLine().trim();
         
-        String code = uniqueCode();
+        String code = uniqueCode(true);
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine().trim();
@@ -131,15 +125,13 @@ public class App {
         String color = scObj.nextLine().trim();
         
         System.out.println("Enter Quantity: ");
-        int quantity = scObj.nextInt();
+        int quantity = Integer.parseInt(scObj.nextLine());
         
         System.out.println("Enter Price: ");
-        double price = scObj.nextDouble();
+        double price = Double.parseDouble(scObj.nextLine());
         
         System.out.println("Enter Weight: ");
-        double weight = scObj.nextDouble();
-
-        scObj.nextLine(); 
+        double weight = Double.parseDouble(scObj.nextLine());
 
         System.out.println("Enter Model: ");
         String model = scObj.nextLine().trim();
@@ -148,26 +140,23 @@ public class App {
         String os = scObj.nextLine().trim();
         
         System.out.println("Enter Screen Size: ");
-        double screenSize = scObj.nextDouble();
+        double screenSize = Double.parseDouble(scObj.nextLine());
         
         System.out.println("Enter Storage (GB): ");
-        double storage = scObj.nextDouble();
-
-        scObj.nextLine();
+        double storage = Double.parseDouble(scObj.nextLine());
 
         return new Smartphone(name, code, description, rlDate, color, quantity, price, weight, 
                               model, os, screenSize, storage);
     }
 
     private Laptop createLp() {
-        scObj.nextLine(); // clears buffer
 
         System.out.println("Please provide all the following information: ");
         
         System.out.println("Enter Name: ");
         String name = scObj.nextLine().trim();
         
-        String code = uniqueCode();
+        String code = uniqueCode(true);
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine().trim();
@@ -179,15 +168,13 @@ public class App {
         String color = scObj.nextLine().trim();
         
         System.out.println("Enter Quantity: ");
-        int quantity = scObj.nextInt();
+        int quantity = Integer.parseInt(scObj.nextLine());
         
         System.out.println("Enter Price: ");
-        double price = scObj.nextDouble();
+        double price = Double.parseDouble(scObj.nextLine());
         
         System.out.println("Enter Weight: ");
-        double weight = scObj.nextDouble();
-
-        scObj.nextLine(); 
+        double weight = Double.parseDouble(scObj.nextLine());
 
         System.out.println("Enter Model: ");
         String model = scObj.nextLine().trim();
@@ -202,15 +189,13 @@ public class App {
         String gpu = scObj.nextLine().trim();
         
         System.out.println("Enter Screen Size: ");
-        double screenSize = scObj.nextDouble();
+        double screenSize = Double.parseDouble(scObj.nextLine());
         
         System.out.println("Enter Storage (GB): ");
-        double storage = scObj.nextDouble();
+        double storage = Double.parseDouble(scObj.nextLine());
 
         System.out.println("Enter RAM capacity (GB): ");
-        double ram = scObj.nextDouble();
-
-        scObj.nextLine();
+        double ram = Double.parseDouble(scObj.nextLine());
 
         boolean isGaming = false;
         while (true) {
@@ -275,8 +260,7 @@ public class App {
     private void chCode(String code) {
         Product p = searchPr(code);
         if (p!= null) {
-            System.out.println("Enter the new Code:");
-            String newCode = scObj.nextLine();
+            String newCode = uniqueCode(false);
             p.setCode(newCode);
         }
     }
@@ -322,13 +306,39 @@ public class App {
             switch (choice) {
                 case 1 -> {
                     System.out.println("Enter the quantity increment");
-                    int num = scObj.nextInt();
+                    int num = Integer.parseInt(scObj.nextLine());
                     p.increaseQ(num);
                 }
                 case 2 -> {
                     System.out.println("Enter the quantity decrement (type a number greater than 0)");
-                    int num = scObj.nextInt();
+                    int num = Integer.parseInt(scObj.nextLine());
                     p.reduceQ(num);
+                }
+            }
+        }
+    }
+
+    private void chPrice(String code) {
+        Product p = searchPr(code);
+        if (p!=null) {
+            String[] arrC = {"Increase the product's price (type 1)", "Decrease the product's price (type 2)"};
+            byte choice;
+            while (true) {
+                choice = getInput(arrC);
+                if (choice == 1 || choice == 2) {
+                    break;
+                } else { System.out.println("Please enter a valid number (1 for increment, 2 for decrement)");}
+            }
+            switch (choice) {
+                case 1 -> {
+                    System.out.println("Enter the price increment");
+                    double num = Double.parseDouble(scObj.nextLine());
+                    p.increaseP(num);
+                }
+                case 2 -> {
+                    System.out.println("Enter the price decrement (type a number greater than 0)");
+                    double num = Double.parseDouble(scObj.nextLine());
+                    p.decreaseP(num);
                 }
             }
         }
