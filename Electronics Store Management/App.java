@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 public class App {
     protected Scanner scObj = new Scanner(System.in);
-    ArrayList<Product> arrPr = new ArrayList<Product>(); 
+    ArrayList<Product> arrPr = new ArrayList<>(); 
     public static void main(String[] args) {
         App myObj = new App();
         myObj.start();
@@ -87,6 +87,22 @@ public class App {
         return scObj.nextByte(); 
     }
 
+    private String uniqueCode() {
+        while (true) {
+            System.out.println("Enter CODE: ");
+            String code = scObj.nextLine().trim();
+            boolean flag = true;
+            for (Product p: arrPr) {
+                if (p.getCode().equals(code)) { 
+                    System.out.println("Product with Code: " + code + " already exists!");
+                    flag = false;
+                    break;
+                }
+            }
+            if (flag) { return code;}
+        }
+    }
+
     private Smartphone createSm() {
         scObj.nextLine(); // clears buffer
 
@@ -95,8 +111,7 @@ public class App {
         System.out.println("Enter Name: ");
         String name = scObj.nextLine().trim();
         
-        System.out.println("Enter CODE: ");
-        String code = scObj.nextLine().trim();
+        String code = uniqueCode();
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine().trim();
@@ -144,8 +159,7 @@ public class App {
         System.out.println("Enter Name: ");
         String name = scObj.nextLine().trim();
         
-        System.out.println("Enter CODE: ");
-        String code = scObj.nextLine().trim();
+        String code = uniqueCode();
         
         System.out.println("Enter Description: ");
         String description = scObj.nextLine().trim();
@@ -195,20 +209,13 @@ public class App {
         System.out.println("Is it considered a Gaming Laptop (Y for Yes or N for No)?");
         String ans = scObj.nextLine().trim().toUpperCase();
 
-        boolean flag = false;
-        switch (ans) {
-            case "Y":
-                isGaming = true;
-                flag = true;
-                break;
-            case "N":
-                isGaming = false;
-                flag = true;
-                break;
-            default:
-                System.out.println("Please enter Y for YES or N for No!");
-        }
-        if (flag) { break; }
+        if (ans.equals("Y")) {
+            isGaming = true;
+            break;
+        } else if (ans.equals("N")) {
+            isGaming = false;
+            break;
+        } else {System.out.println("Please enter Y for YES or N for No!");}
         }
 
         return new Laptop (name, code, description, rlDate, color, quantity, price, weight, model, os, 
