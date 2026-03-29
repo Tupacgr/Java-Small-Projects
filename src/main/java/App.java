@@ -18,7 +18,8 @@ public class App {
         System.out.println("Application access successful. Date & Time: " + newLdt1);
         String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
          "4: Search a Product and get it's Information", "5: Change a Product's Name", "6: Change a Product's Code", "7: Change a Product's Description",
-          "8: Change a Product's Release Date", "9: Change a Product's Color", "10: Change a product's Quantity",  "11: Change a Product's Price", "12: Exit"};
+          "8: Change a Product's Release Date", "9: Change a Product's Color", "10: Change a product's Quantity",  "11: Change a Product's Price", 
+          "12: Change a Product's weight", "13: Exit"};
         String[] catalogueProd = {"1: Smartphone", "2: Laptop"};
 
         while (true) {
@@ -78,7 +79,11 @@ public class App {
                     code = rcCode();
                     chPrice(code);
                 }
-                case 12 -> { 
+                case 12 -> {
+                    code = rcCode();
+                    chWeight(code);
+                }
+                case 13 -> { 
                 System.out.println("Exiting...");
                 return;
                 }
@@ -348,5 +353,15 @@ public class App {
                 }
             }
         }
+    }
+
+    private void chWeight(String code) {
+        Product p = searchPr(code);
+        if (p!=null) {
+            System.out.println("Enter the new Weight:");
+            double newWeight = Double.parseDouble(scObj.nextLine());
+            if (newWeight > 0) { p.setWeight(newWeight);} 
+            else {System.out.println("Weight cannot be <= 0!");}
+        } 
     }
 }

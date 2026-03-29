@@ -9,7 +9,7 @@ This program simulates an electronics store terminal. It receives orders from th
 ## 🚀 Features
 
 * **Create a Product and provide information such as its Name, CODE, Description, Quantity, Price and Weight** 
-* **Change a Product's Name, Code, Description, Release Date, Color, Quantity, Price** 
+* **Change a Product's Name, Code, Description, Release Date, Color, Quantity, Price and Weight** 
 * **Print all the information of a Product at once** 
 * **Print all the information of all products of a specific type at once (e.g. all the smartphones information)**
 
@@ -30,6 +30,7 @@ This program simulates an electronics store terminal. It receives orders from th
 ## 📅 Version History
 
 * **v1.0** - Initial Release: An Electronics Store Management program with multiple possibilities
+* **v1.1** - v1.1 Release: Added a date & time display and the option to change a product's weight with a validity check
 
 ---
 *Created by [FRONX] - AUEB Informatics Undergraduate*
