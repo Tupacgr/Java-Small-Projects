@@ -1,5 +1,7 @@
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class App {
     protected Scanner scObj = new Scanner(System.in);
@@ -10,6 +12,10 @@ public class App {
     }
 
     public void start() {
+        LocalDateTime ldt1 = LocalDateTime.now();
+        DateTimeFormatter f1 = DateTimeFormatter.ofPattern("dd-MM-yyyy & HH:mm:ss");
+        String newLdt1 = ldt1.format(f1);
+        System.out.println("Application access successful. Date & Time: " + newLdt1);
         String[] catalogueMain = {"1: Create a new Product", "2: View all the Smartphones Information", "3: View all the Laptops Information",
          "4: Search a Product and get it's Information", "5: Change a Product's Name", "6: Change a Product's Code", "7: Change a Product's Description",
           "8: Change a Product's Release Date", "9: Change a Product's Color", "10: Change a product's Quantity",  "11: Change a Product's Price", "12: Exit"};

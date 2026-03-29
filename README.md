@@ -23,6 +23,7 @@ This program simulates an electronics store terminal. It receives orders from th
     * **Data Management: Using ArrayList to store Products information and access the cli menu**
     * **Enhanced Switch Statements: Using enhanced switch statements to control the user's input**
     * **Automated Inventory Management: Updating Products information in real-time**  
+    * **Java Time API: Displaying a formatted version of date and time using LocalDateTime and DateTimeFormatter classes**  
     
 
 
