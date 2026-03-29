@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class App {
+    private record MutualData(String name, String code, String description, String rlDate, String color, int quantity, double price, double weight) {}
     protected Scanner scObj = new Scanner(System.in);
     ArrayList<Product> arrPr = new ArrayList<>(); 
     public static void main(String[] args) {
@@ -117,10 +118,7 @@ public class App {
         }
     }
 
-    private Smartphone createSm() {
-
-        System.out.println("Please provide all the following information: ");
-        
+    private MutualData getMutualData() {
         System.out.println("Enter Name: ");
         String name = scObj.nextLine().trim();
         
@@ -143,6 +141,15 @@ public class App {
         
         System.out.println("Enter Weight: ");
         double weight = Double.parseDouble(scObj.nextLine());
+
+        return new MutualData(name, code, description, rlDate, color, quantity, price, weight);
+    }
+
+    private Smartphone createSm() {
+
+        System.out.println("Please provide all the following information: ");
+
+        MutualData md = getMutualData();
 
         System.out.println("Enter Model: ");
         String model = scObj.nextLine().trim();
@@ -156,36 +163,15 @@ public class App {
         System.out.println("Enter Storage (GB): ");
         double storage = Double.parseDouble(scObj.nextLine());
 
-        return new Smartphone(name, code, description, rlDate, color, quantity, price, weight, 
-                              model, os, screenSize, storage);
+        return new Smartphone(md.name(), md.code(), md.description(), md.rlDate(), md.color(), md.quantity(), 
+                md.price(), md.weight(), model, os, screenSize, storage);
     }
 
     private Laptop createLp() {
 
         System.out.println("Please provide all the following information: ");
         
-        System.out.println("Enter Name: ");
-        String name = scObj.nextLine().trim();
-        
-        String code = uniqueCode(true);
-        
-        System.out.println("Enter Description: ");
-        String description = scObj.nextLine().trim();
-
-        System.out.println("Enter Release Date: ");
-        String rlDate = scObj.nextLine().trim();
-
-        System.out.println("Enter Color: ");
-        String color = scObj.nextLine().trim();
-        
-        System.out.println("Enter Quantity: ");
-        int quantity = Integer.parseInt(scObj.nextLine());
-        
-        System.out.println("Enter Price: ");
-        double price = Double.parseDouble(scObj.nextLine());
-        
-        System.out.println("Enter Weight: ");
-        double weight = Double.parseDouble(scObj.nextLine());
+        MutualData md = getMutualData();
 
         System.out.println("Enter Model: ");
         String model = scObj.nextLine().trim();
@@ -222,8 +208,8 @@ public class App {
         } else {System.out.println("Please enter Y for YES or N for No!");}
         }
 
-        return new Laptop (name, code, description, rlDate, color, quantity, price, weight, model, os, 
-            cpu, gpu, screenSize, storage, ram, isGaming);
+        return new Laptop (md.name(), md.code(), md.description(), md.rlDate(), md.color(), md.quantity(), 
+                md.price(), md.weight(), model, os, cpu, gpu, screenSize, storage, ram, isGaming);
         
     }
 
