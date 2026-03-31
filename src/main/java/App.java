@@ -25,11 +25,10 @@ public class App {
 
         while (true) {
             byte choice = getInput(catalogueMain);
-            byte c;
             String code;
             switch (choice) {
                 case 1 -> {
-                    c = getInput(catalogueProd);
+                    byte c = getInput(catalogueProd);
                     switch (c) {
                         case 1 -> {
                             arrPr.add(createSm());
@@ -95,17 +94,34 @@ public class App {
         }
     }
 
+    private byte getByte(String msg) {
+        if (msg != null) { System.out.println(msg);}
+        while (true) {
+            try { return Byte.parseByte(scObj.nextLine().trim());}
+            catch (NumberFormatException e) { System.out.println("Please enter an integer"); }
+        }
+    }
+
+    private int getInt(String msg) {
+        if (msg != null) { System.out.println(msg);}
+        while (true) {
+            try { return Integer.parseInt(scObj.nextLine().trim());}
+            catch (NumberFormatException e) { System.out.println("Please enter an integer");}
+        }
+    }
+
+    private double getDouble(String msg) {
+        if (msg != null) { System.out.println(msg);}
+        while (true) {
+            try { return Double.parseDouble(scObj.nextLine().trim());}
+            catch (NumberFormatException e) {System.out.println("Please enter a floating point number");}
+        }
+    }
+
     public byte getInput(String[] catalogue) {
         System.out.println("Please type the number of your preferred choice (eg 1, 2, 3 etc...)");
         for (String c: catalogue) { System.out.println(c); }
-        while (true) {
-            try {
-                return Byte.parseByte(scObj.nextLine().trim()); 
-            }
-            catch (NumberFormatException e) {
-                System.out.println("Please enter a valid integer!");
-            }
-        }
+        return getByte(null);
     }
 
     private String uniqueCode(boolean sign) {
@@ -140,14 +156,11 @@ public class App {
         System.out.println("Enter Color: ");
         String color = scObj.nextLine().trim();
         
-        System.out.println("Enter Quantity: ");
-        int quantity = Integer.parseInt(scObj.nextLine().trim());
+        int quantity = getInt("Enter Quantity: ");
         
-        System.out.println("Enter Price: ");
-        double price = Double.parseDouble(scObj.nextLine().trim());
+        double price = getDouble("Enter Price: ");
         
-        System.out.println("Enter Weight: ");
-        double weight = Double.parseDouble(scObj.nextLine().trim());
+        double weight = getDouble("Enter Weight: ");
 
         return new MutualData(name, code, description, rlDate, color, quantity, price, weight);
     }
@@ -164,11 +177,9 @@ public class App {
         System.out.println("Enter OS: ");
         String os = scObj.nextLine().trim();
         
-        System.out.println("Enter Screen Size: ");
-        double screenSize = Double.parseDouble(scObj.nextLine().trim());
+        double screenSize = getDouble("Enter Screen Size: ");
         
-        System.out.println("Enter Storage (GB): ");
-        double storage = Double.parseDouble(scObj.nextLine().trim());
+        double storage = getDouble("Enter Storage (GB): ");
 
         return new Smartphone(md.name(), md.code(), md.description(), md.rlDate(), md.color(), md.quantity(), 
                 md.price(), md.weight(), model, os, screenSize, storage);
@@ -192,14 +203,11 @@ public class App {
         System.out.println("Enter GPU model: ");
         String gpu = scObj.nextLine().trim();
         
-        System.out.println("Enter Screen Size: ");
-        double screenSize = Double.parseDouble(scObj.nextLine().trim());
-        
-        System.out.println("Enter Storage (GB): ");
-        double storage = Double.parseDouble(scObj.nextLine().trim());
+        double screenSize = getDouble("Enter Screen Size: ");
 
-        System.out.println("Enter RAM capacity (GB): ");
-        double ram = Double.parseDouble(scObj.nextLine().trim());
+        double storage = getDouble("Enter Storage (GB): ");
+
+        double ram = getDouble("Enter RAM capacity (GB): ");
 
         boolean isGaming = false;
         while (true) {
@@ -309,13 +317,11 @@ public class App {
             }
             switch (choice) {
                 case 1 -> {
-                    System.out.println("Enter the quantity increment");
-                    int num = Integer.parseInt(scObj.nextLine().trim());
+                    int num = getInt("Enter the quantity increment");
                     p.increaseQ(num);
                 }
                 case 2 -> {
-                    System.out.println("Enter the quantity decrement (type a number greater than 0)");
-                    int num = Integer.parseInt(scObj.nextLine().trim());
+                    int num = getInt("Enter the quantity decrement (type a number greater than 0)");
                     p.reduceQ(num);
                 }
             }
@@ -335,13 +341,11 @@ public class App {
             }
             switch (choice) {
                 case 1 -> {
-                    System.out.println("Enter the price increment");
-                    double num = Double.parseDouble(scObj.nextLine().trim());
+                    double num = getDouble("Enter the price increment");
                     p.increaseP(num);
                 }
                 case 2 -> {
-                    System.out.println("Enter the price decrement (type a number greater than 0)");
-                    double num = Double.parseDouble(scObj.nextLine().trim());
+                    double num = getDouble("Enter the price decrement (type a number greater than 0)");
                     p.decreaseP(num);
                 }
             }
@@ -351,8 +355,7 @@ public class App {
     private void chWeight(String code) {
         Product p = searchPr(code);
         if (p!=null) {
-            System.out.println("Enter the new Weight:");
-            double newWeight = Double.parseDouble(scObj.nextLine().trim());
+            double newWeight = getDouble("Enter the new Weight:");
             if (newWeight > 0) { p.setWeight(newWeight);} 
             else {System.out.println("Weight cannot be <= 0!");}
         } 
