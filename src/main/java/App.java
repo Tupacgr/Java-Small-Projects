@@ -98,7 +98,14 @@ public class App {
     public byte getInput(String[] catalogue) {
         System.out.println("Please type the number of your preferred choice (eg 1, 2, 3 etc...)");
         for (String c: catalogue) { System.out.println(c); }
-        return Byte.parseByte(scObj.nextLine()); 
+        while (true) {
+            try {
+                return Byte.parseByte(scObj.nextLine().trim()); 
+            }
+            catch (NumberFormatException e) {
+                System.out.println("Please enter a valid integer!");
+            }
+        }
     }
 
     private String uniqueCode(boolean sign) {
@@ -134,13 +141,13 @@ public class App {
         String color = scObj.nextLine().trim();
         
         System.out.println("Enter Quantity: ");
-        int quantity = Integer.parseInt(scObj.nextLine());
+        int quantity = Integer.parseInt(scObj.nextLine().trim());
         
         System.out.println("Enter Price: ");
-        double price = Double.parseDouble(scObj.nextLine());
+        double price = Double.parseDouble(scObj.nextLine().trim());
         
         System.out.println("Enter Weight: ");
-        double weight = Double.parseDouble(scObj.nextLine());
+        double weight = Double.parseDouble(scObj.nextLine().trim());
 
         return new MutualData(name, code, description, rlDate, color, quantity, price, weight);
     }
@@ -158,10 +165,10 @@ public class App {
         String os = scObj.nextLine().trim();
         
         System.out.println("Enter Screen Size: ");
-        double screenSize = Double.parseDouble(scObj.nextLine());
+        double screenSize = Double.parseDouble(scObj.nextLine().trim());
         
         System.out.println("Enter Storage (GB): ");
-        double storage = Double.parseDouble(scObj.nextLine());
+        double storage = Double.parseDouble(scObj.nextLine().trim());
 
         return new Smartphone(md.name(), md.code(), md.description(), md.rlDate(), md.color(), md.quantity(), 
                 md.price(), md.weight(), model, os, screenSize, storage);
@@ -186,13 +193,13 @@ public class App {
         String gpu = scObj.nextLine().trim();
         
         System.out.println("Enter Screen Size: ");
-        double screenSize = Double.parseDouble(scObj.nextLine());
+        double screenSize = Double.parseDouble(scObj.nextLine().trim());
         
         System.out.println("Enter Storage (GB): ");
-        double storage = Double.parseDouble(scObj.nextLine());
+        double storage = Double.parseDouble(scObj.nextLine().trim());
 
         System.out.println("Enter RAM capacity (GB): ");
-        double ram = Double.parseDouble(scObj.nextLine());
+        double ram = Double.parseDouble(scObj.nextLine().trim());
 
         boolean isGaming = false;
         while (true) {
@@ -241,7 +248,7 @@ public class App {
 
     private String rcCode() {
         System.out.println("Enter the Product's Code:");
-        String code  = scObj.nextLine();
+        String code  = scObj.nextLine().trim();
         return code;
     }
 
@@ -249,7 +256,7 @@ public class App {
         Product p = searchPr(code);
         if (p!=null) {
             System.out.println("Enter the new Name:");
-            String newName = scObj.nextLine();
+            String newName = scObj.nextLine().trim();
             p.setName(newName);
         }
     }
@@ -266,7 +273,7 @@ public class App {
         Product p = searchPr(code);
         if (p!=null) {
             System.out.println("Enter the new Description:");
-            String newDesc = scObj.nextLine();
+            String newDesc = scObj.nextLine().trim();
             p.setDescription(newDesc);
         }
     }
@@ -275,7 +282,7 @@ public class App {
         Product p = searchPr(code);
         if (p!=null) {
             System.out.println("Enter the new Release Date:");
-            String newRl = scObj.nextLine();
+            String newRl = scObj.nextLine().trim();
             p.setRlDate(newRl);
         } 
     }
@@ -284,7 +291,7 @@ public class App {
         Product p = searchPr(code);
         if (p!=null) {
             System.out.println("Enter the new Color:");
-            String newColor = scObj.nextLine();
+            String newColor = scObj.nextLine().trim();
             p.setColor(newColor);
         } 
     }
@@ -303,12 +310,12 @@ public class App {
             switch (choice) {
                 case 1 -> {
                     System.out.println("Enter the quantity increment");
-                    int num = Integer.parseInt(scObj.nextLine());
+                    int num = Integer.parseInt(scObj.nextLine().trim());
                     p.increaseQ(num);
                 }
                 case 2 -> {
                     System.out.println("Enter the quantity decrement (type a number greater than 0)");
-                    int num = Integer.parseInt(scObj.nextLine());
+                    int num = Integer.parseInt(scObj.nextLine().trim());
                     p.reduceQ(num);
                 }
             }
@@ -329,12 +336,12 @@ public class App {
             switch (choice) {
                 case 1 -> {
                     System.out.println("Enter the price increment");
-                    double num = Double.parseDouble(scObj.nextLine());
+                    double num = Double.parseDouble(scObj.nextLine().trim());
                     p.increaseP(num);
                 }
                 case 2 -> {
                     System.out.println("Enter the price decrement (type a number greater than 0)");
-                    double num = Double.parseDouble(scObj.nextLine());
+                    double num = Double.parseDouble(scObj.nextLine().trim());
                     p.decreaseP(num);
                 }
             }
@@ -345,7 +352,7 @@ public class App {
         Product p = searchPr(code);
         if (p!=null) {
             System.out.println("Enter the new Weight:");
-            double newWeight = Double.parseDouble(scObj.nextLine());
+            double newWeight = Double.parseDouble(scObj.nextLine().trim());
             if (newWeight > 0) { p.setWeight(newWeight);} 
             else {System.out.println("Weight cannot be <= 0!");}
         } 
