@@ -12,6 +12,8 @@ This program simulates an electronics store terminal. It receives orders from th
 * **Change a Product's Name, Code, Description, Release Date, Color, Quantity, Price and Weight** 
 * **Print all the information of a Product at once** 
 * **Print all the information of all products of a specific type at once (e.g. all the smartphones information)**
+* **Log the Date and the Time each time the code is executed in a 'logs.txt' file**
+
 
 
 ## 🛠️ Technologies Used
@@ -30,6 +32,8 @@ This program simulates an electronics store terminal. It receives orders from th
     * **DRY: Utilizing Java 17 Records to enhance data management and provide a shared logic in products creation**
     * **Input Filtering: Utilizing .trim() and .toUpperCase()**
     * **Type Checking: Utilizing .isInstance() and Class<? extends Product> to filter objects that extend the Product Class**
+    * **File I/O and logs creation: Utilizing File and FileWritter classes to log execution timestaps of the program each time the code is executed in a logs.txt file and automatically creating it in case it doesn't exist**
+
     
 
 ## 📅 Version History
@@ -37,6 +41,8 @@ This program simulates an electronics store terminal. It receives orders from th
 * **v1.0** - Initial Release: An Electronics Store Management program with multiple possibilities
 * **v1.1** - v1.1 Release: Added a date & time display and the option to change a product's weight with a validity check
 * **v1.2** - v1.2 Release: Improved Data Management. Implemented Exception handling methods to ensure the application is not vulnerable to crashes.
+* **v1.3** - v1.3 Release: Logs Creation. Keep the Date and the Time each time the program is executed.
+
 
 ---
 *Created by [FRONX] - AUEB Informatics Undergraduate*
