@@ -1,4 +1,6 @@
-abstract class Product {
+import java.io.Serializable;
+
+abstract class Product implements Serializable{
     private String name, code, description, rlDate, color;
     private int quantity;
     private double price, weight;

@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 public class App {
     private record MutualData(String name, String code, String description, String rlDate, String color, int quantity, double price, double weight) {}
     protected Scanner scObj = new Scanner(System.in);
-    ArrayList<Product> arrPr = new ArrayList<>(); 
+    ArrayList<Product> arrPr = Persistence.deSerialization();
     public static void main(String[] args) {
         App myObj = new App();
         myObj.start();
@@ -85,8 +85,9 @@ public class App {
                     chWeight(code);
                 }
                 case 13 -> { 
-                System.out.println("Exiting...");
-                return;
+                    Persistence.serialization(arrPr);
+                    System.out.println("Exiting...");
+                    return;
                 }
                 default-> System.out.println("Please enter a valid number!");
 
